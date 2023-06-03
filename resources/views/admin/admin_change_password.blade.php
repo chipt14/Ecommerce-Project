@@ -2,11 +2,9 @@
 @section('admin')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
-
 <div class="container-full">
     <!-- Main content -->
     <section class="content">
-
         <!-- Basic Forms -->
         <div class="box">
             <div class="box-header with-border">
@@ -54,7 +52,6 @@
                                 <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update">
                             </div>
                         </form>
-
                     </div>
                     <!-- /.col -->
                 </div>
@@ -63,7 +60,6 @@
             <!-- /.box-body -->
         </div>
         <!-- /.box -->
-
     </section>
     <!-- /.content -->
 </div>
