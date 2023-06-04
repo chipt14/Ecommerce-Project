@@ -88,7 +88,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        $(function(){
+        $(function() {
             $(document).on('click', '#delete', function(e) {
                 e.preventDefault();
                 var link = $(this).attr("href");

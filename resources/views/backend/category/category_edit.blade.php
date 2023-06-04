@@ -8,35 +8,32 @@
             <div class="col-12">
                 <div class="box">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Edit Brand</h3>
+                        <h3 class="box-title">Edit Category</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
                         <div class="table-responsive">
-                            <form method="post" action="{{ route('brand.update', $brand->id) }}" enctype="multipart/form-data">
+                            <form method="post" action="{{ route('category.update', $category->id) }}">
                                 @csrf
-                                <input type="hidden" name="id" value="{{ $brand->id }}">
-                                <input type="hidden" name="old_image" value="{{ $brand->brand_image }}">
+                                <input type="hidden" name="id" value="{{ $category->id }}">
                                 <div class="form-group">
-                                    <h5>Brand Name<span class="text-danger">*</span></h5>
+                                    <h5>Category Name<span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <input type="text" name="brand_name_en" class="form-control" value="{{ $brand->brand_name_en }}">
-                                        @error('brand_name_en')
+                                        <input type="text" name="category_name" class="form-control" value="{{ $category->category_name }}">
+                                        @error('category_name')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
                                 </div>
-
                                 <div class="form-group">
-                                    <h5>Brand Image<span class="text-danger">*</span></h5>
+                                    <h5>Category Icon<span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <input type="file" name="brand_image" class="form-control">
-                                        @error('brand_image')
+                                        <input type="text" name="category_icon" class="form-control" value="{{ $category->category_icon }}">
+                                        @error('category_icon')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
                                 </div>
-
                                 <div class="text-xs-right">
                                     <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update">
                                 </div>
