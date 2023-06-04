@@ -51,18 +51,18 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-6">
+                                        <!-- <div class="col-6">
                                         <div class="checkbox text-white">
                                             <input type="checkbox" id="basic_checkbox_1" >
                                             <label for="basic_checkbox_1">Remember Me</label>
                                         </div>
-                                        </div>
+                                        </div> -->
                                         <!-- /.col -->
-                                        <div class="col-6">
+                                        <!-- <div class="col-6">
                                         <div class="fog-pwd text-right">
                                             <a href="{{ route('password.request') }}" class="text-white hover-info"><i class="ion ion-locked"></i> Forgot pwd?</a><br>
-                                        </div>
-                                        </div>
+                                        </div> -->
+                                        <!-- </div> -->
                                         <!-- /.col -->
                                         <div class="col-12 text-center">
                                         <button type="submit" class="btn btn-info btn-rounded mt-10">SIGN IN</button>
@@ -81,9 +81,9 @@
                                     </p>
                                 </div>
 
-                                <div class="text-center">
+                                <!-- <div class="text-center">
                                     <p class="mt-15 mb-0 text-white">Don't have an account? <a href="auth_register.html" class="text-info ml-5">Sign Up</a></p>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
