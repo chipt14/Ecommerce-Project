@@ -58,11 +58,19 @@
     <script src="../assets/vendor_components/datatable/datatables.min.js"></script>
     <script src="backend/js/pages/data-table.js"></script>
 
+    <!-- Tags input script -->
+	<script src="../assets/vendor_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.js"></script>
+
+    <!-- CK EDITOR -->
+    <script src="../assets/vendor_components/ckeditor/ckeditor.js"></script>
+	<script src="../assets/vendor_plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.js"></script>
+	<script src="backend/js/pages/editor.js"></script>
+
     <!-- Sunny Admin App -->
     <script src="backend/js/template.js"></script>
     <script src="backend/js/pages/dashboard.js"></script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-
     <script>
         @if(Session::has('message'))
         var type = "{{ Session::get('alert-type', 'info') }}"
