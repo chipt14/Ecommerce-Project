@@ -35,7 +35,7 @@
                                         <td>{{ $item->selling_price }} $</td>
                                         <td>{{ $item->product_qty }} Pic</td>
                                         <td>
-                                            @if($item->discount_price == 0)
+                                            @if($item->discount_price == NULL)
                                             <span class="badge badge-pill badge-danger">No Discount</span>
                                             @else
                                             @php
