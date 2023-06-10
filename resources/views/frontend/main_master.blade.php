@@ -10,7 +10,7 @@
     <meta name="keywords" content="MediaCenter, Template, eCommerce">
     <meta name="robots" content="all">
     <base href="{{ asset('') }}">
-    <title>Flipmart</title>
+    <title>@yield('title')</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="frontend/assets/css/bootstrap.min.css">

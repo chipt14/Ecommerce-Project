@@ -1,6 +1,10 @@
 @extends('frontend.main_master')
 @section('content')
 
+@section('title')
+Home Flipmart
+@endsection
+
 <div class="body-content outer-top-xs" id="top-banner-and-menu">
     <div class="container">
         <div class="row">
@@ -910,7 +914,7 @@
                                         <div class="products">
                                             <div class="product">
                                                 <div class="product-image">
-                                                    <div class="image"> <a href="detail.html"><img src="{{ $product->product_thambnail }}" alt=""></a> </div>
+                                                    <div class="image"> <a href="{{ url('product/details/' . $product->id . '/' . $product->product_slug) }}"><img src="{{ $product->product_thambnail }}" alt=""></a> </div>
                                                     <!-- /.image -->
                                                     @php
                                                     $amount = intval($product->selling_price) - intval($product->discount_price);
@@ -929,7 +933,7 @@
                                                 <!-- /.product-image -->
 
                                                 <div class="product-info text-left">
-                                                    <h3 class="name"><a href="detail.html">{{ $product->product_name }}</a></h3>
+                                                    <h3 class="name"><a href="{{ url('product/details/' . $product->id . '/' . $product->product_slug) }}">{{ $product->product_name }}</a></h3>
                                                     <div class="rating rateit-small"></div>
                                                     <div class="description"></div>
                                                     @if($product->discount_price == NULL)
@@ -986,7 +990,7 @@
                                         <div class="products">
                                             <div class="product">
                                                 <div class="product-image">
-                                                    <div class="image"> <a href="detail.html"><img src="{{ $product->product_thambnail }}" alt=""></a> </div>
+                                                    <div class="image"> <a href="{{ url('product/details/' . $product->id . '/' . $product->product_slug) }}"><img src="{{ $product->product_thambnail }}" alt=""></a> </div>
                                                     <!-- /.image -->
                                                     @php
                                                     $amount = intval($product->selling_price) - intval($product->discount_price);
@@ -1005,7 +1009,7 @@
                                                 <!-- /.product-image -->
 
                                                 <div class="product-info text-left">
-                                                    <h3 class="name"><a href="detail.html">{{ $product->product_name }}</a></h3>
+                                                    <h3 class="name"><a href="">{{ $product->product_name }}</a></h3>
                                                     <div class="rating rateit-small"></div>
                                                     <div class="description"></div>
                                                     @if($product->discount_price == NULL)
