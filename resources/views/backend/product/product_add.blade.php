@@ -246,7 +246,7 @@
                                             </fieldset>
                                             <fieldset>
                                                 <input type="checkbox" id="checkbox_3" name="featured" value="1">
-                                                <label for="checkbox_3">Reatured</label>
+                                                <label for="checkbox_3">Featured</label>
                                             </fieldset>
                                         </div>
                                     </div>
