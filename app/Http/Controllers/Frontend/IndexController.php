@@ -108,4 +108,11 @@ class IndexController extends Controller
         $multiImg = MultiImg::where('product_id', $id)->get();
         return view('frontend.product.product_details', compact('product', 'multiImg'));
     }
+
+    public function TagWiseProduct($tag)
+    {
+        $products = Product::where('status', 1)->where('product_tags', $tag)->orderBy('id', 'DESC')->paginate(1);
+        $categories = Category::orderBy('category_name', 'ASC')->get();
+        return view('frontend.tags.tags_view', compact('products', 'categories'));
+    }
 }

@@ -1,6 +1,5 @@
 @extends('frontend.main_master')
 @section('content')
-
 @section('title')
 Home Flipmart
 @endsection
@@ -12,50 +11,7 @@ Home Flipmart
             <div class="col-xs-12 col-sm-12 col-md-3 sidebar">
 
                 <!-- ================================== TOP NAVIGATION ================================== -->
-                <div class="side-menu animate-dropdown outer-bottom-xs">
-                    <div class="head"><i class="icon fa fa-align-justify fa-fw"></i> Categories</div>
-                    <nav class="yamm megamenu-horizontal">
-                        <ul class="nav">
-
-                            @foreach($categories as $category)
-                            <li class="dropdown menu-item"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="{{ $category->category_icon }}" aria-hidden="true"></i>{{ $category->category_name }}</a>
-                                <ul class="dropdown-menu mega-menu">
-                                    <li class="yamm-content">
-                                        <div class="row">
-                                            @php
-                                            $subcategories = App\Models\SubCategory::where('category_id', $category->id)->orderby('subcategory_name', 'ASC')->get();
-                                            @endphp
-
-                                            @foreach($subcategories as $subcategory)
-                                            <div class="col-sm-12 col-md-3">
-                                                <h2 class="title">{{ $subcategory->subcategory_name }}</h2>
-                                                @php
-                                                $subsubcategories = App\Models\SubSubCategory::where('subcategory_id', $subcategory->id)->orderby('subsubcategory_name', 'ASC')->get();
-                                                @endphp
-
-                                                @foreach($subsubcategories as $subsubcategory)
-                                                <ul class="links list-unstyled">
-                                                    <li><a href="#"></a>{{ $subsubcategory->subsubcategory_name }}</li>
-                                                </ul>
-                                                @endforeach
-                                            </div>
-                                            @endforeach
-                                            <!-- /.col -->
-                                        </div>
-                                        <!-- /.row -->
-                                    </li>
-                                    <!-- /.yamm-content -->
-                                </ul>
-                                <!-- /.dropdown-menu -->
-                            </li>
-                            <!-- /.menu-item -->
-                            @endforeach <!-- /.end-foreach-category -->
-                        </ul>
-                        <!-- /.nav -->
-                    </nav>
-                    <!-- /.megamenu-horizontal -->
-                </div>
-                <!-- /.side-menu -->
+                @include('frontend.common.vertical_menu')
                 <!-- ================================== TOP NAVIGATION : END ================================== -->
 
                 <!-- ============================================== HOT DEALS ============================================== -->
@@ -184,15 +140,7 @@ Home Flipmart
                 <!-- /.sidebar-widget -->
                 <!-- ============================================== SPECIAL OFFER : END ============================================== -->
                 <!-- ============================================== PRODUCT TAGS ============================================== -->
-                <div class="sidebar-widget product-tag wow fadeInUp">
-                    <h3 class="section-title">Product tags</h3>
-                    <div class="sidebar-widget-body outer-top-xs">
-                        <div class="tag-list"> <a class="item" title="Phone" href="category.html">Phone</a> <a class="item active" title="Vest" href="category.html">Vest</a> <a class="item" title="Smartphone" href="category.html">Smartphone</a> <a class="item" title="Furniture" href="category.html">Furniture</a> <a class="item" title="T-shirt" href="category.html">T-shirt</a> <a class="item" title="Sweatpants" href="category.html">Sweatpants</a> <a class="item" title="Sneaker" href="category.html">Sneaker</a> <a class="item" title="Toys" href="category.html">Toys</a> <a class="item" title="Rose" href="category.html">Rose</a> </div>
-                        <!-- /.tag-list -->
-                    </div>
-                    <!-- /.sidebar-widget-body -->
-                </div>
-                <!-- /.sidebar-widget -->
+                @include('frontend.common.product_tags')
                 <!-- ============================================== PRODUCT TAGS : END ============================================== -->
                 <!-- ============================================== SPECIAL DEALS ============================================== -->
 

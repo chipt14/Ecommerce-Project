@@ -113,3 +113,6 @@ Route::post('/user/password/update', [IndexController::class, 'UserPasswordUpdat
 
 // Frontend Product Details Page Url
 Route::get('/product/details/{id}/{slug}', [IndexController::class, 'ProductDetails']);
+
+// Frontend Product Tags Page Url
+Route::get('/product/tag/{tag}', [IndexController::class, 'TagWiseProduct']);
