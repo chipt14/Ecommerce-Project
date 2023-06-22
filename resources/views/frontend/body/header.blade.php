@@ -144,7 +144,9 @@
                     <div class="navbar-collapse collapse" id="mc-horizontal-menu-collapse">
                         <div class="nav-outer">
                             <ul class="nav navbar-nav">
-                                <li class="active dropdown yamm-fw"> <a href="{{ url('/') }}" data-hover="dropdown" class="dropdown-toggle" data-toggle="dropdown">Home</a> </li>
+                                <li class="{{ Request::is('/') ? 'active' : '' }}">
+                                    <a href="{{ url('/') }}">Home</a>
+                                </li>
 
                                 <!-- Get Category Table Data -->
                                 @php
@@ -164,7 +166,9 @@
 
                                                     @foreach($subcategories as $subcategory)
                                                     <div class="col-xs-12 col-sm-6 col-md-2 col-menu">
-                                                        <h2 class="title">{{ $subcategory->subcategory_name}}</h2>
+                                                        <a href="{{ url('subcategory/product/'.$subcategory->id.'/'.$subcategory->subcategory_slug ) }}">
+                                                            <h2 class="title">{{ $subcategory->subcategory_name}}</h2>
+                                                        </a>
                                                         <!-- Get Category Table Data -->
                                                         @php
                                                         $subsubcategories = App\Models\SubSubCategory::where('subcategory_id', $subcategory->id)->orderby('subsubcategory_name', 'ASC')->get();
@@ -172,7 +176,9 @@
 
                                                         @foreach($subsubcategories as $subsubcategory)
                                                         <ul class="links">
-                                                            <li><a href="#">{{ $subsubcategory->subsubcategory_name }}</a></li>
+                                                            <li>
+                                                                <a href="{{ url('subsubcategory/product/'.$subsubcategory->id.'/'.$subsubcategory->subsubcategory_slug ) }}">{{ $subsubcategory->subsubcategory_name }}</a>
+                                                            </li>
                                                         </ul>
                                                         @endforeach <!-- end subsubcategory Foreach -->
                                                     </div>
