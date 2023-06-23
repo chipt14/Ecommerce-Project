@@ -122,3 +122,6 @@ Route::get('/subcategory/product/{subcat_id}/{slug}', [IndexController::class, '
 
 // Frontend SubSubCategory Wise Data
 Route::get('/subsubcategory/product/{subsubcat_id}/{slug}', [IndexController::class, 'SubSubCatWiseProduct']);
+
+// Product View Modal with Ajax
+Route::get('/product/view/modal/{id}', [IndexController::class, 'ProductViewAjax']);
