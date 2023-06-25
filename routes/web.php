@@ -1,10 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Frontend\IndexController;
+use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Backend\AdminProfileController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
@@ -113,15 +114,17 @@ Route::post('/user/password/update', [IndexController::class, 'UserPasswordUpdat
 
 // Frontend Product Details Page Url
 Route::get('/product/details/{id}/{slug}', [IndexController::class, 'ProductDetails']);
-
 // Frontend Product Tags Page Url
 Route::get('/product/tag/{tag}', [IndexController::class, 'TagWiseProduct']);
-
 // Frontend SubCategory Wise Data
 Route::get('/subcategory/product/{subcat_id}/{slug}', [IndexController::class, 'SubCatWiseProduct']);
-
 // Frontend SubSubCategory Wise Data
 Route::get('/subsubcategory/product/{subsubcat_id}/{slug}', [IndexController::class, 'SubSubCatWiseProduct']);
-
 // Product View Modal with Ajax
 Route::get('/product/view/modal/{id}', [IndexController::class, 'ProductViewAjax']);
+// Add to Cart Store Data
+Route::post('/cart/data/store/{id}', [CartController::class, 'AddToCart']);
+// Get Data form mini cart
+Route::get('/product/mini/cart/', [CartController::class, 'AddMiniCart']);
+// Get Data form mini cart
+Route::get('/minicart/product-remove/{rowId}', [CartController::class, 'RemoveMiniCart']);

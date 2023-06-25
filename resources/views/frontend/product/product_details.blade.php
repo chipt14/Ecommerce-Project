@@ -115,7 +115,7 @@
                         </div><!-- /.gallery-holder -->
                         <div class='col-sm-6 col-md-7 product-info-block'>
                             <div class="product-info">
-                                <h1 class="name">{{ $product->product_name }}</h1>
+                                <h1 class="name" id="pname">{{ $product->product_name }}</h1>
 
                                 <div class="rating-reviews m-t-20">
                                     <div class="row">
@@ -151,8 +151,6 @@
 
                                 <div class="price-container info-container m-t-20">
                                     <div class="row">
-
-
                                         <div class="col-sm-6">
                                             <div class="price-box">
                                                 @if($product->discount_price == NULl)
@@ -186,7 +184,7 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label class="info-title control-label">Color <span></span></label>
-                                            <select class="form-control unicase-form-control selectpicker">
+                                            <select class="form-control unicase-form-control selectpicker" style="display: none;" id="color">
                                                 <option selected="" disabled="">--Select options--</option>
                                                 @foreach($product_color as $color)
                                                 <option value="{{ $color }}">{{ ucwords($color) }}</option>
@@ -196,13 +194,16 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
+                                            @if($product->product_size == NULL)
+                                            @else
                                             <label class="info-title control-label">Size <span></span></label>
-                                            <select class="form-control unicase-form-control selectpicker">
+                                            <select class="form-control unicase-form-control selectpicker" style="display: none;" id="size">
                                                 <option selected="" disabled="">--Select options--</option>
                                                 @foreach($product_size as $size)
                                                 <option value="{{ $size }}">{{ ucwords($size) }}</option>
                                                 @endforeach
                                             </select>
+                                            @endif
                                         </div>
                                     </div>
                                 </div><!-- /.row -->
@@ -218,17 +219,19 @@
                                         <div class="col-sm-2">
                                             <div class="cart-quantity">
                                                 <div class="quant-input">
-                                                    <div class="arrows">
+                                                    <!-- <div class="arrows">
                                                         <div class="arrow plus gradient"><span class="ir"><i class="icon fa fa-sort-asc"></i></span></div>
                                                         <div class="arrow minus gradient"><span class="ir"><i class="icon fa fa-sort-desc"></i></span></div>
-                                                    </div>
-                                                    <input type="text" value="1">
+                                                    </div> -->
+                                                    <input type="number" class="form-control" id="qty" value="1" min="1">
                                                 </div>
                                             </div>
                                         </div>
-
+                                        <input type="hidden" id="product_id" value="{{ $product->id}}" min="1">
                                         <div class="col-sm-7">
-                                            <a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart inner-right-vs"></i> ADD TO CART</a>
+                                            <button type="submit" onclick="addToCart()" class="btn btn-primary mb-2">
+                                                <i class="fa fa-shopping-cart inner-right-vs"></i> ADD TO CART
+                                            </button>
                                         </div>
 
 
