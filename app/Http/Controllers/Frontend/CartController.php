@@ -57,7 +57,6 @@ class CartController extends Controller
             'carts' => $carts,
             'cartQty' => $cartQty,
             'cartTotal' => round($cartTotal),
-
         ));
     }
 

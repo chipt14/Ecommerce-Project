@@ -12,6 +12,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SliderController;
+use App\Http\Controllers\User\CartPageController;
 use App\Http\Controllers\User\WishlistController;
 
 Route::group(['prefix' => 'admin', 'middleware' => ['admin:admin']], function () {
@@ -133,11 +134,18 @@ Route::get('/minicart/product-remove/{rowId}', [CartController::class, 'RemoveMi
 Route::post('/add-to-wishlist/{product_id}', [CartController::class, 'AddToWishlist']);
 
 // Wishlist Page
-Route::group(['prefix' => 'user', 'middleware' => ['user', 'auth'], 'namespace' => 'User'],
-    function()
-    {
-        Route::get('wishlist', [WishlistController::class, 'ViewWishlist'])->name('wishlist');
-        Route::get('get-wishlist-product', [WishlistController::class, 'GetWishlistProduct']);
-        Route::get('/wishlist-remove/{id}', [WishlistController::class, 'RemoveWishlistProduct']);
+Route::group(['prefix' => 'user', 'middleware' => ['user', 'auth'], 'namespace' => 'User'], function() {
+    Route::get('/wishlist', [WishlistController::class, 'ViewWishlist'])->name('wishlist');
+    Route::get('/get-wishlist-product', [WishlistController::class, 'GetWishlistProduct']);
+    Route::get('/wishlist-remove/{id}', [WishlistController::class, 'RemoveWishlistProduct']);
+    Route::get('/mycart', [CartPageController::class, 'MyCart'])->name('mycart');
+    Route::get('/get-cart-product', [CartPageController::class, 'GetCartProduct']);
+    Route::get('/cart-remove/{id}', [CartPageController::class, 'RemoveCartProduct']);
+});
 
-    });
+// My Cart Page All Routes
+Route::get('/mycart', [CartPageController::class, 'MyCart'])->name('mycart');
+Route::get('/user/get-cart-product', [CartPageController::class, 'GetCartProduct']);
+Route::get('/user/cart-remove/{id}', [CartPageController::class, 'RemoveCartProduct']);
+Route::get('/cart-increment/{rowId}', [CartPageController::class, 'CartIncrement']);
+Route::get('/cart-decrement/{rowId}', [CartPageController::class, 'CartDecrement']);

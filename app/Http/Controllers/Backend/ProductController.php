@@ -20,7 +20,6 @@ class ProductController extends Controller
         $categories = Category::latest()->get();
         $brands = Brand::latest()->get();
         return view('backend.product.product_add', compact('categories', 'brands'));
-
     }
 
     public function StoreProduct(Request $request)
