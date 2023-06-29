@@ -16,12 +16,12 @@ class SubSubCategory extends Model
         'subsubcategory_slug',
     ];
 
-    public function Category()
+    public function category()
     {
     	return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
-    public function Subcategory()
+    public function subcategory()
     {
     	return $this->belongsTo(SubCategory::class, 'subcategory_id', 'id');
     }
