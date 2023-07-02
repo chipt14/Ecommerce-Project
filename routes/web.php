@@ -131,7 +131,6 @@ Route::middleware(['auth:admin'])->group(function () {
         Route::get('/province/delete/{id}', [ShippingAreaController::class, 'ProvinceDelete'])->name('province.delete');
     });
 
-
 });
 
 // User All Routes
@@ -183,3 +182,9 @@ Route::get('/user/get-cart-product', [CartPageController::class, 'GetCartProduct
 Route::get('/user/cart-remove/{id}', [CartPageController::class, 'RemoveCartProduct']);
 Route::get('/cart-increment/{rowId}', [CartPageController::class, 'CartIncrement']);
 Route::get('/cart-decrement/{rowId}', [CartPageController::class, 'CartDecrement']);
+
+// Frontend Coupon Option
+Route::post('/coupon-apply', [CartController::class, 'CouponApply']);
+Route::get('/coupon-calculation', [CartController::class, 'CouponCalculation']);
+Route::get('/coupon-remove', [CartController::class, 'CouponRemove']);
+
