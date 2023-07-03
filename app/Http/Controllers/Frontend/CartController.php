@@ -5,13 +5,14 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Coupon;
 use App\Models\Product;
+use App\Models\ShipDistrict;
+use App\Models\ShipDivision;
 use App\Models\Wishlist;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
-use PhpParser\Node\Stmt\If_;
 
 class CartController extends Controller
 {
@@ -70,7 +71,7 @@ class CartController extends Controller
     public function RemoveMiniCart($rowId)
     {
         Cart::remove($rowId);
-    	return response()->json(['success' => 'Product Remove from Cart']);
+        return response()->json(['success' => 'Product Remove from Cart']);
     }
 
     public function AddToWishlist(Request $request, $product_id)
@@ -90,7 +91,6 @@ class CartController extends Controller
         } else {
             return response()->json(['error' => 'At Firt Login Your Account']);
         }
-
     }
 
     public function CouponApply(Request $request)
@@ -126,12 +126,39 @@ class CartController extends Controller
                 'total' => Cart::total(),
             ));
         }
-
     }
 
     public function CouponRemove()
     {
         Session::forget('coupon');
         return response()->json(['success' => 'Coupon Remove Successfully']);
+    }
+
+    public function CheckoutCreate()
+    {
+        if (Auth::check()) {
+            if (Cart::total() > 0) {
+
+                $carts = Cart::content();
+                $cartQty = Cart::count();
+                $cartTotal = Cart::total();
+
+                $divisions = ShipDivision::orderBy('division_name', 'ASC')->get();
+
+                return view('frontend.checkout.checkout_view', compact('carts', 'cartQty', 'cartTotal', 'divisions'));
+            } else {
+                $notification = array(
+                    'message' => 'Shopping At list One Product',
+                    'alert-type' => 'error',
+                );
+                return redirect()->to('/')->with($notification);
+            }
+        } else {
+            $notification = array(
+                'message' => 'You Need to Login First',
+                'alert-type' => 'error',
+            );
+            return redirect()->route('login')->with($notification);
+        }
     }
 }
