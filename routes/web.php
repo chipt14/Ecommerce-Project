@@ -16,6 +16,7 @@ use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\User\CartPageController;
 use App\Http\Controllers\User\CheckoutController;
+use App\Http\Controllers\User\StripeController;
 use App\Http\Controllers\User\WishlistController;
 
 Route::group(['prefix' => 'admin', 'middleware' => ['admin:admin']], function () {
@@ -175,6 +176,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['user', 'auth'], 'namespace' 
     Route::get('/mycart', [CartPageController::class, 'MyCart'])->name('mycart');
     Route::get('/get-cart-product', [CartPageController::class, 'GetCartProduct']);
     Route::get('/cart-remove/{id}', [CartPageController::class, 'RemoveCartProduct']);
+    Route::post('/stripe/order', [StripeController::class, 'StripeOrder'])->name('stripe.order');
 });
 
 // My Cart Page All Routes
