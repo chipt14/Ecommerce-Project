@@ -179,7 +179,7 @@ My Checkout
                                     <div class="col-md-4">
                                         <label for="">Cash</label>
                                         <input type="radio" name="payment_method" value="cash">
-                                        <img src="frontend/assets/images/payments/2.png" alt="">
+                                        <img src="frontend/assets/images/payments/6.png" alt="">
                                     </div>
                                 </div>
                                 <hr>

@@ -14,7 +14,9 @@ use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\ShippingAreaController;
+use App\Http\Controllers\User\AllUerController;
 use App\Http\Controllers\User\CartPageController;
+use App\Http\Controllers\User\CashController;
 use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\User\StripeController;
 use App\Http\Controllers\User\WishlistController;
@@ -177,6 +179,11 @@ Route::group(['prefix' => 'user', 'middleware' => ['user', 'auth'], 'namespace' 
     Route::get('/get-cart-product', [CartPageController::class, 'GetCartProduct']);
     Route::get('/cart-remove/{id}', [CartPageController::class, 'RemoveCartProduct']);
     Route::post('/stripe/order', [StripeController::class, 'StripeOrder'])->name('stripe.order');
+    Route::post('/cash/order', [CashController::class, 'CashOrder'])->name('cash.order');
+    Route::get('/my/orders', [AllUerController::class, 'MyOrders'])->name('my.orders');
+    Route::get('/order_details/{order_id}', [AllUerController::class, 'OrderDetails']);
+
+
 });
 
 // My Cart Page All Routes
