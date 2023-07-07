@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\OrderItem;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,8 +19,21 @@ class AllUerController extends Controller
 
     public function OrderDetails($order_id)
     {
-        $order = Order::with('division','district','province','user')->where('id', $order_id)->where('user_id', Auth::id())->first();
+        $order = Order::with('division', 'district', 'province', 'user')->where('id', $order_id)->where('user_id', Auth::id())->first();
         $orderItem  = OrderItem::with('product')->where('order_id', $order_id)->orderBy('id', 'DESC')->get();
         return view('frontend.user.order.order_details', compact('order', 'orderItem'));
+    }
+
+    public function InvoiceDownload($order_id)
+    {
+        $order = Order::with('division', 'district', 'province', 'user')->where('id', $order_id)->where('user_id', Auth::id())->first();
+        $orderItem  = OrderItem::with('product')->where('order_id', $order_id)->orderBy('id', 'DESC')->get();
+        $pdf = Pdf::loadView('frontend.user.order.order_invoice', compact('order', 'orderItem'))
+            ->setPaper('a4')
+            ->setOptions([
+                'tempDir' => public_path(),
+                'chroot' => public_path(),
+            ]);
+        return $pdf->download('invoice.pdf');
     }
 }
