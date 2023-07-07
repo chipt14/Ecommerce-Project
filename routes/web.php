@@ -13,6 +13,7 @@ use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\CouponController;
+use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\User\AllUerController;
 use App\Http\Controllers\User\CartPageController;
@@ -135,6 +136,17 @@ Route::middleware(['auth:admin'])->group(function () {
         Route::get('/province/delete/{id}', [ShippingAreaController::class, 'ProvinceDelete'])->name('province.delete');
     });
 
+    // Admin Order All Routes
+    Route::prefix('orders')->group(function () {
+        Route::get('/pending/oders', [OrderController::class, 'PendingOrders'])->name('pending-orders');
+        Route::get('/pending/orders/details/{order_id}', [OrderController::class, 'PendingOrdersDetails'])->name('pending.order.details');
+        Route::get('/confirmed/orders', [OrderController::class, 'ConfirmedOrders'])->name('confirmed-orders');
+        Route::get('/processing/orders', [OrderController::class, 'ProcessingOrders'])->name('processing-orders');
+        Route::get('/picked/orders', [OrderController::class, 'PickedOrders'])->name('picked-orders');
+        Route::get('/shipped/orders', [OrderController::class, 'ShippedOrders'])->name('shipped-orders');
+        Route::get('/delivered/orders', [OrderController::class, 'DeliveredOrders'])->name('delivered-orders');
+        Route::get('/cancel/orders', [OrderController::class, 'CancelOrders'])->name('cancel-orders');
+    });
 });
 
 // User All Routes
@@ -171,7 +183,7 @@ Route::get('/minicart/product-remove/{rowId}', [CartController::class, 'RemoveMi
 Route::post('/add-to-wishlist/{product_id}', [CartController::class, 'AddToWishlist']);
 
 // Wishlist Page
-Route::group(['prefix' => 'user', 'middleware' => ['user', 'auth'], 'namespace' => 'User'], function() {
+Route::group(['prefix' => 'user', 'middleware' => ['user', 'auth'], 'namespace' => 'User'], function () {
     Route::get('/wishlist', [WishlistController::class, 'ViewWishlist'])->name('wishlist');
     Route::get('/get-wishlist-product', [WishlistController::class, 'GetWishlistProduct']);
     Route::get('/wishlist-remove/{id}', [WishlistController::class, 'RemoveWishlistProduct']);

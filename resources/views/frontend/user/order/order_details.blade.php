@@ -154,6 +154,13 @@
                     </div>
                 </div> <!-- / end col md 8 -->
             </div> <!-- // END ORDER ITEM ROW -->
+            @if($order->status !== "delivered")
+            @else
+            <div class="form-group">
+                <label for="label">Order Return Reason:</label>
+                <textarea class="form-control" name="return_reason" id="" cols="30" rows="05">Return Reason</textarea>
+            </div>
+            @endif
         </div> <!-- // end row -->
     </div>
 </div>
