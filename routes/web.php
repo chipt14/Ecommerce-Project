@@ -14,6 +14,7 @@ use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\OrderController;
+use App\Http\Controllers\Backend\ReportController;
 use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\User\AllUerController;
 use App\Http\Controllers\User\CartPageController;
@@ -153,6 +154,19 @@ Route::middleware(['auth:admin'])->group(function () {
         Route::get('/shipped/delivered/{order_id}', [OrderController::class, 'ShippedToDelivered'])->name('shipped.delivered');
         Route::get('/invoice/download/{order_id}', [OrderController::class, 'AdminInvoiceDownload'])->name('invoice.download');
     });
+
+    // Admin Reports Routes
+    Route::prefix('reports')->group(function () {
+        Route::get('/view', [ReportController::class, 'ReportView'])->name('all-reports');
+        Route::post('/search/by/date', [ReportController::class, 'ReportByDate'])->name('search-by-date');
+        Route::post('/search/by/month', [ReportController::class, 'ReportByMonth'])->name('search-by-month');
+        Route::post('/search/by/year', [ReportController::class, 'ReportByYear'])->name('search-by-year');
+    });
+
+    // Admin Get All User Routes
+    Route::prefix('alluser')->group(function () {
+        Route::get('/view', [AdminProfileController::class, 'AllUsers'])->name('all-users');
+    });
 });
 
 // User All Routes
@@ -204,7 +218,6 @@ Route::group(['prefix' => 'user', 'middleware' => ['user', 'auth'], 'namespace' 
     Route::post('/return/order/{order_id}', [AllUerController::class, 'ReturnOrder'])->name('return.order');
     Route::get('/return/order/list', [AllUerController::class, 'ReturnOrderList'])->name('return.order.list');
     Route::get('/cancel/orders', [AllUerController::class, 'CancelOrders'])->name('cancel.orders');
-
 });
 
 // My Cart Page All Routes
