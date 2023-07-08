@@ -123,7 +123,7 @@
                                     </th>
                                 </tr>
                             </thead>
-                                @foreach($orderItem as $item)
+                            @foreach($orderItem as $item)
                             <tbody>
                                 <tr>
                                     <td class="col-md-2 text-center">
@@ -156,11 +156,26 @@
             </div> <!-- // END ORDER ITEM ROW -->
             @if($order->status !== "delivered")
             @else
-            <div class="form-group">
-                <label for="label">Order Return Reason:</label>
-                <textarea class="form-control" name="return_reason" id="" cols="30" rows="05">Return Reason</textarea>
-            </div>
+
+                @php
+                $order = App\Models\Order::where('id',$order->id)->where('return_reason','=',NULL)->first();
+                @endphp
+
+                @if($order)
+                <form action="{{ route('return.order',$order->id) }}" method="post">
+                    @csrf
+                    <div class="form-group">
+                        <label for="label"> Order Return Reason:</label>
+                        <textarea name="return_reason" id="" class="form-control" cols="30" rows="05">Return Reason</textarea>
+                    </div>
+                    <button type="submit" class="btn btn-danger">Submit</button>
+                </form>
+                @else
+                <span class="badge badge-pill badge-warning" style="background: red">You Have send return request for this product</span>
+                @endif
+
             @endif
+            <br><br>
         </div> <!-- // end row -->
     </div>
 </div>

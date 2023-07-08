@@ -201,6 +201,10 @@ Route::group(['prefix' => 'user', 'middleware' => ['user', 'auth'], 'namespace' 
     Route::get('/my/orders', [AllUerController::class, 'MyOrders'])->name('my.orders');
     Route::get('/order_details/{order_id}', [AllUerController::class, 'OrderDetails']);
     Route::get('/invoice_download/{order_id}', [AllUerController::class, 'InvoiceDownload']);
+    Route::post('/return/order/{order_id}', [AllUerController::class, 'ReturnOrder'])->name('return.order');
+    Route::get('/return/order/list', [AllUerController::class, 'ReturnOrderList'])->name('return.order.list');
+    Route::get('/cancel/orders', [AllUerController::class, 'CancelOrders'])->name('cancel.orders');
+
 });
 
 // My Cart Page All Routes
