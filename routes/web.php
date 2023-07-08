@@ -6,7 +6,9 @@ use App\Models\User;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\Frontend\HomeBlogController;
 use App\Http\Controllers\Backend\AdminProfileController;
+use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubCategoryController;
@@ -167,6 +169,17 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::prefix('alluser')->group(function () {
         Route::get('/view', [AdminProfileController::class, 'AllUsers'])->name('all-users');
     });
+
+    // Admin Blog Routes
+    Route::prefix('blog')->group(function () {
+        Route::get('/category', [BlogController::class, 'BlogCategory'])->name('blog.category');
+        Route::post('/store', [BlogController::class, 'BlogCategoryStore'])->name('blogcategory.store');
+        Route::get('/category/edit/{id}', [BlogController::class, 'BlogCategoryEdit'])->name('blog.category.edit');
+        Route::post('/update', [BlogController::class, 'BlogCategoryUpdate'])->name('blogcategory.update');
+        Route::get('/list/post', [BlogController::class, 'ListBlogPost'])->name('list.post');
+        Route::get('/add/post', [BlogController::class, 'AddBlogPost'])->name('add.post');
+        Route::post('/post/store', [BlogController::class, 'BlogPostStore'])->name('post-store');
+    });
 });
 
 // User All Routes
@@ -237,3 +250,8 @@ Route::get('checkout', [CartController::class, 'CheckoutCreate'])->name('checkou
 Route::get('/district-get/ajax/{division_id}', [CheckoutController::class, 'DistrictGetAjax']);
 Route::get('/province-get/ajax/{district_id}', [CheckoutController::class, 'ProvinceGetAjax']);
 Route::post('/checkout/store', [CheckoutController::class, 'CheckoutStore'])->name('checkout.store');
+
+//  Frontend Blog Show Routes
+Route::get('/blog', [HomeBlogController::class, 'AddBlogPost'])->name('home.blog');
+Route::get('/post/details/{id}', [HomeBlogController::class, 'DetailsBlogPost'])->name('post.details');
+Route::get('/blog/category/post/{category_id}', [HomeBlogController::class, 'HomeBlogCatPost']);
