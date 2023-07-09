@@ -6,7 +6,6 @@ $route = Route::current()->getName();
 <aside class="main-sidebar">
     <!-- sidebar-->
     <section class="sidebar">
-
         <div class="user-profile">
             <div class="ulogo">
                 <a href="index.html">
@@ -18,17 +17,14 @@ $route = Route::current()->getName();
                 </a>
             </div>
         </div>
-
         <!-- sidebar menu-->
         <ul class="sidebar-menu" data-widget="tree">
-
             <li class="{{ ($route == 'dashboard') ? 'active' : '' }}">
                 <a href="{{ url('admin/dashboard') }}">
                     <i data-feather="pie-chart"></i>
                     <span>Dashboard</span>
                 </a>
             </li>
-
             <li class="treeview {{ ($prefix == '/brand') ? 'active' : '' }}">
                 <a href="#">
                     <i data-feather="message-circle"></i>
@@ -43,7 +39,6 @@ $route = Route::current()->getName();
                     </li>
                 </ul>
             </li>
-
             <li class="treeview {{ ($prefix == '/category') ? 'active' : '' }}">
                 <a href="#">
                     <i data-feather="mail"></i> <span>Category</span>
@@ -63,7 +58,6 @@ $route = Route::current()->getName();
                     </li>
                 </ul>
             </li>
-
             <li class="treeview {{ ($prefix == '/product') ? 'active' : '' }}">
                 <a href="#">
                     <i data-feather="file"></i>
@@ -81,7 +75,6 @@ $route = Route::current()->getName();
                     </li>
                 </ul>
             </li>
-
             <li class="treeview {{ ($prefix == '/slider') ? 'active' : '' }}">
                 <a href="#">
                     <i data-feather="file"></i>
@@ -96,7 +89,6 @@ $route = Route::current()->getName();
                     </li>
                 </ul>
             </li>
-
             <li class="treeview {{ ($prefix == '/coupons') ? 'active' : '' }}">
                 <a href="#">
                     <i data-feather="file"></i>
@@ -111,7 +103,6 @@ $route = Route::current()->getName();
                     </li>
                 </ul>
             </li>
-
             <li class="treeview {{ ($prefix == '/shipping') ? 'active' : '' }}">
                 <a href="#">
                     <i data-feather="file"></i>
@@ -132,9 +123,7 @@ $route = Route::current()->getName();
                     </li>
                 </ul>
             </li>
-
             <li class="header nav-small-cap">User Interface</li>
-
             <li class="treeview {{ ($prefix == '/orders') ? 'active' : '' }}">
                 <a href="#">
                     <i data-feather="file"></i>
@@ -197,8 +186,22 @@ $route = Route::current()->getName();
                     <li class="{{ ($route == 'list.post')? 'active':'' }}"><a href="{{ route('list.post') }}"><i class="ti-more"></i>List Blog Post</a></li>
                     <li class="{{ ($route == 'add.post')? 'active':'' }}"><a href="{{ route('add.post') }}"><i class="ti-more"></i>Add Blog Post</a></li>
                 </ul>
+            </li>
+            <li class="treeview {{ ($prefix == '/setting')?'active':'' }}  ">
+                <a href="#">
+                    <i data-feather="file"></i>
+                    <span>Manage Setting</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-right pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="{{ ($route == 'site.setting')? 'active':'' }}"><a href="{{ route('site.setting') }}"><i class="ti-more"></i>Site Setting</a></li>
+                    <li class="{{ ($route == 'seo.setting')? 'active':'' }}"><a href="{{ route('seo.setting') }}"><i class="ti-more"></i>Seo Setting</a></li>
+                </ul>
+            </li>
+        </ul>
     </section>
-
     <div class="sidebar-footer">
         <!-- item-->
         <a href="javascript:void(0)" class="link" data-toggle="tooltip" title="" data-original-title="Settings" aria-describedby="tooltip92529"><i class="ti-settings"></i></a>

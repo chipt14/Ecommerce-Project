@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+@php
+$seo = App\Models\Seo::find(1);
+@endphp
 
 <head>
     <!-- Meta -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-
-    <meta name="description" content="">
+    <meta name="description" content="{{ $seo->meta_description }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <meta name="author" content="">
-    <meta name="keywords" content="MediaCenter, Template, eCommerce">
+    <meta name="author" content="{{ $seo->meta_author }}">
+    <meta name="keywords" content="{{ $seo->meta_keyword }}">
     <meta name="robots" content="all">
 
     <base href="{{ asset('') }}">
@@ -569,7 +570,9 @@
             $.ajax({
                 type: 'POST',
                 dataType: 'json',
-                data: {coupon_name: coupon_name},
+                data: {
+                    coupon_name: coupon_name
+                },
                 url: "{{ url('/coupon-apply') }}",
                 success: function(data) {
                     couponCalculation();

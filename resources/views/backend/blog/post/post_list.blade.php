@@ -25,7 +25,9 @@
                                     @foreach($blogpost as $item)
                                     <tr>
                                         <td>{{ $item->category->blog_category_name }}</td>
-                                        <td> <img src="{{ $item->post_image) }}" style="width: 60px; height: 60px;"> </td>
+                                        <td>
+                                            <img src="{{ $item->post_image }}" style="width: 60px; height: 60px;">
+                                        </td>
                                         <td>{{ $item->post_title }}</td>
                                         <td width="20%">
                                             <a href="{{ route('blog.category.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i> </a>
