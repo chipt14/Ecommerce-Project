@@ -15,7 +15,7 @@
 
             <div class="card">
                 <h3 class="text-center">
-                    <span class="text-danger">Hi...</span>
+                    <span class="text-danger">Hi</span>
                     <strong>{{ $user->name }}</strong>
                     Welcome To Flipmart
                 </h3>

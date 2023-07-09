@@ -6,7 +6,7 @@
             <div class="header-top-inner">
                 <div class="cnt-account">
                     <ul class="list-unstyled">
-                        <li><a href="#"><i class="icon fa fa-user"></i>My Account</a></li>
+                        <!-- <li><a href="#"><i class="icon fa fa-user"></i>My Account</a></li> -->
                         <li><a href="{{ route('wishlist') }}"><i class="icon fa fa-heart"></i>Wishlist</a></li>
                         <li><a href="{{ route('mycart') }}"><i class="icon fa fa-shopping-cart"></i>My Cart</a></li>
                         <li><a href="{{ route('checkout') }}"><i class="icon fa fa-check"></i>Checkout</a></li>
@@ -21,7 +21,7 @@
                 </div>
                 <!-- /.cnt-account -->
 
-                <div class="cnt-block">
+                <!-- <div class="cnt-block">
                     <ul class="list-unstyled list-inline">
                         <li class="dropdown dropdown-small"> <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><span class="value">USD </span><b class="caret"></b></a>
                             <ul class="dropdown-menu">
@@ -31,8 +31,7 @@
                             </ul>
                         </li>
                     </ul>
-                    <!-- /.list-unstyled -->
-                </div>
+                </div> -->
                 <!-- /.cnt-cart -->
                 <div class="clearfix"></div>
             </div>
