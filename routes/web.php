@@ -24,6 +24,7 @@ use App\Http\Controllers\User\AllUerController;
 use App\Http\Controllers\User\CartPageController;
 use App\Http\Controllers\User\CashController;
 use App\Http\Controllers\User\CheckoutController;
+use App\Http\Controllers\User\ReviewController;
 use App\Http\Controllers\User\StripeController;
 use App\Http\Controllers\User\WishlistController;
 
@@ -197,6 +198,15 @@ Route::middleware(['auth:admin'])->group(function () {
         Route::get('/admin/return/approve/{order_id}', [ReturnController::class, 'ReturnRequestApprove'])->name('return.approve');
         Route::get('/admin/all/request', [ReturnController::class, 'ReturnAllRequest'])->name('all.request');
     });
+
+    // Admin Manage Review Routes
+    Route::prefix('review')->group(function () {
+        Route::get('/pending', [ReviewController::class, 'PendingReview'])->name('pending.review');
+        Route::get('/admin/approve/{id}', [ReviewController::class, 'ReviewApprove'])->name('review.approve');
+        Route::get('/admin/all/request', [ReturnController::class, 'ReturnAllRequest'])->name('all.request');
+        Route::get('/publish', [ReviewController::class, 'PublishReview'])->name('publish.review');
+        Route::get('/delete/{id}', [ReviewController::class, 'DeleteReview'])->name('delete.review');
+    });
 });
 
 // User All Routes
@@ -272,3 +282,6 @@ Route::post('/checkout/store', [CheckoutController::class, 'CheckoutStore'])->na
 Route::get('/blog', [HomeBlogController::class, 'AddBlogPost'])->name('home.blog');
 Route::get('/post/details/{id}', [HomeBlogController::class, 'DetailsBlogPost'])->name('post.details');
 Route::get('/blog/category/post/{category_id}', [HomeBlogController::class, 'HomeBlogCatPost']);
+
+///Frontend Product Review Routes
+Route::post('/review/store', [ReviewController::class, 'ReviewStore'])->name('review.store');
