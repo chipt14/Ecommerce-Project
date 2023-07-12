@@ -196,7 +196,6 @@ class ProductController extends Controller
             'alert-type' => 'success'
         ];
         return redirect()->back()->with($notification);
-
     }
 
     public function ProductInactive($id)
@@ -219,7 +218,6 @@ class ProductController extends Controller
             'alert-type' => 'success'
         ];
         return redirect()->back()->with($notification);
-
     }
 
     public function ProductDelete($id)
@@ -239,5 +237,11 @@ class ProductController extends Controller
             'alert-type' => 'success'
         ];
         return redirect()->back()->with($notification);
+    }
+
+    public function ProductStock()
+    {
+        $products = Product::latest()->get();
+        return view('backend.product.product_stock', compact('products'));
     }
 }

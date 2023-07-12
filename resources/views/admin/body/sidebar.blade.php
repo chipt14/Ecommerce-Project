@@ -176,6 +176,22 @@
                             href="{{ route('cancel-orders') }}"><i class="ti-more"></i> Cancel Orders</a></li>
                 </ul>
             </li>
+            <li class="treeview {{ $prefix == '/stock' ? 'active' : '' }}  ">
+                <a href="#">
+                    <i data-feather="file"></i>
+                    <span>Manage Stock </span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-right pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="{{ $route == 'product.stock' ? 'active' : '' }}">
+                        <a href="{{ route('product.stock') }}">
+                            <i class="ti-more"></i>Product Stock
+                        </a>
+                    </li>
+                </ul>
+            </li>
             <li class="treeview {{ $prefix == '/reports' ? 'active' : '' }}">
                 <a href="#">
                     <i data-feather="file"></i>
@@ -185,8 +201,8 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="{{ $route == 'all-reports' ? 'active' : '' }}"><a href="{{ route('all-reports') }}"><i
-                                class="ti-more"></i>All Reports</a></li>
+                    <li class="{{ $route == 'all-reports' ? 'active' : '' }}"><a
+                            href="{{ route('all-reports') }}"><i class="ti-more"></i>All Reports</a></li>
                 </ul>
             </li>
             <li class="treeview {{ $prefix == '/alluser' ? 'active' : '' }}  ">
@@ -230,8 +246,8 @@
                 <ul class="treeview-menu">
                     <li class="{{ $route == 'site.setting' ? 'active' : '' }}"><a
                             href="{{ route('site.setting') }}"><i class="ti-more"></i>Site Setting</a></li>
-                    <li class="{{ $route == 'seo.setting' ? 'active' : '' }}"><a href="{{ route('seo.setting') }}"><i
-                                class="ti-more"></i>Seo Setting</a></li>
+                    <li class="{{ $route == 'seo.setting' ? 'active' : '' }}"><a
+                            href="{{ route('seo.setting') }}"><i class="ti-more"></i>Seo Setting</a></li>
                 </ul>
             </li>
             <li class="treeview {{ $prefix == '/return' ? 'active' : '' }}  ">
@@ -245,8 +261,8 @@
                 <ul class="treeview-menu">
                     <li class="{{ $route == 'return.request' ? 'active' : '' }}"><a
                             href="{{ route('return.request') }}"><i class="ti-more"></i>Return Request</a></li>
-                    <li class="{{ $route == 'all.request' ? 'active' : '' }}"><a href="{{ route('all.request') }}"><i
-                                class="ti-more"></i>All Request</a></li>
+                    <li class="{{ $route == 'all.request' ? 'active' : '' }}"><a
+                            href="{{ route('all.request') }}"><i class="ti-more"></i>All Request</a></li>
                 </ul>
             </li>
         </ul>
